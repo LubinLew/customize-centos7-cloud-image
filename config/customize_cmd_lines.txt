@@ -1,0 +1,31 @@
+# change local repo
+#delete /etc/yum.repos.d/*
+#copy-in config/repo/CentOS-7.repo:/etc/yum.repos.d/
+#copy-in config/repo/EPEL-7.repo:/etc/yum.repos.d/
+
+# yum update -y
+update
+
+# install tools
+install vim,wget,python36,tree,psmisc,supervisor,tzdata,ca-certificates
+
+
+# upgrade pip3
+run-command pip3 install pip --upgrade
+
+# add CAs
+#copy-in config/certificates/ca.test.com.crt:/etc/pki/ca-trust/source/anchors/
+#run-command update-ca-trust
+#run-command rm -f /etc/pki/ca-trust/source/anchors/ca.test.com.crt
+
+# ADD cloud-init config
+#copy-in config/cloud-init/99_xx.cfg:/etc/cloud/cloud.cfg.d/
+
+# Timezone
+timezone Asia/Shanghai
+
+# passwd
+root-password password:root
+# https://forums.centos.org/viewtopic.php?f=47&t=79260
+run-command touch /.autorelabel
+
