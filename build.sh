@@ -34,11 +34,11 @@ cp ${ORIGIN_IMAGE_NAME} ${TARGET_IMAGE_NAME}
 
 ## 3. customize the virtual machine with config file
 log_info "customizing the virtual machine ..."
-virt-sysprep -a uncompressed_${TARGET_IMAGE_NAME} --network --commands-from-file config/customize_cmd_lines.txt
+virt-sysprep -a ${TARGET_IMAGE_NAME} --network --commands-from-file config/customize_cmd_lines.txt
 
 
 ## 4.compresse qcow2 image
-log_info "compressing the qcow2 image ..."
-qemu-img convert -c -O qcow2 uncompressed_${TARGET_IMAGE_NAME} ${TARGET_IMAGE_NAME}
-rm -f uncompressed_${TARGET_IMAGE_NAME}
+#log_info "compressing the qcow2 image ..."
+#qemu-img convert -c -O qcow2 uncompressed_${TARGET_IMAGE_NAME} ${TARGET_IMAGE_NAME}
+#rm -f uncompressed_${TARGET_IMAGE_NAME}
 log_info "End!"
